@@ -5,14 +5,13 @@
   "main": "index.js",
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "typecheck:examples": "tsc --project tsconfig.examples.json --noEmit",
     "build": "tsc",
-    "build:examples": "tsc --project tsconfig.examples.json",
-    "lint": "eslint src/**/*.ts",
-    "eslint:format": "eslint src/**/*.ts --fix",
+    "lint": "eslint **/*.ts",
+    "eslint:format": "eslint **/*.ts --fix",
     "prettier:check": "prettier . -c --log-level=warn",
-    "prettier:format": "prettier --log-level=warn --write \"src/**/*.{jsx,js,ts,tsx}\"",
-    "examples": "ts-node examples"
+    "prettier:format": "prettier --log-level=warn --write \"**/*.{jsx,js,ts,tsx}\"",
+    "examples": "ts-node examples",
+    "prepare": "husky install"
   },
   "files": [
     "dist",
@@ -29,11 +28,14 @@
   },
   "homepage": "https://github.com/stelmakhivan/data-structures-ts#readme",
   "devDependencies": {
+    "@commitlint/config-conventional": "^18.4.0",
     "@tsconfig/node-lts": "^18.12.5",
     "@types/node": "^20.9.0",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
+    "commitlint": "^18.4.1",
     "eslint": "^8.53.0",
+    "husky": "^8.0.3",
     "prettier": "^3.1.0",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
