@@ -2,7 +2,8 @@
   "name": "data-structures-ts",
   "version": "1.0.0",
   "description": "Example of data structures with ts",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "source": "src/index",
   "scripts": {
     "typecheck": "tsc --noEmit",
     "build": "tsc",
