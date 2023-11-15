@@ -142,6 +142,9 @@ export class SinglyLinkedList<T = never> {
   }
 
   reverse(): SinglyLinkedList<T> {
+    if (!this.head) {
+      return this;
+    }
     let node = this.head;
     this.head = this.tail;
     this.tail = node;
@@ -150,7 +153,7 @@ export class SinglyLinkedList<T = never> {
     let nextNode: Node<T> | null = null;
 
     for (let i = 0; i < this.length; i++) {
-      nextNode = node!.next;
+      nextNode = node.next!;
       node!.next = prevNode;
       prevNode = node;
       node = nextNode;
