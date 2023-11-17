@@ -3,7 +3,7 @@ import { DoublyLinkedList } from 'data-structures-ts';
 
 console.log('\n========================');
 console.log('     DoublyLinkedList     ');
-console.log('==========================');
+console.log('========================');
 
 let list = new DoublyLinkedList<string>();
 console.log(list);

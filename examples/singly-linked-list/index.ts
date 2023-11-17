@@ -1,7 +1,7 @@
 import console from 'node:console';
 import { SinglyLinkedList } from 'data-structures-ts';
 
-console.log('\n========================');
+console.log('\n==========================');
 console.log('     SinglyLinkedList     ');
 console.log('==========================');
 
