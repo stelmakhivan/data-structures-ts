@@ -8,7 +8,7 @@ class Node<T> {
 // https://visualgo.net/en/list
 /* Big O of Stacks
   - Insertion - O(1)
-  - Removal - O(n)
+  - Removal - O(1)
   - Search - O(n)
   - Access - O(n)
 */
