@@ -17,7 +17,7 @@ class Node<T> {
 export class BinarySearchTree<T> {
   constructor(public root: Node<T> | null = null) {}
 
-  insert(value: T): BinarySearchTree<T> | undefined {
+  insert(value: T): this | undefined {
     const newNode = new Node(value);
     if (this.root === null) {
       this.root = newNode;
@@ -60,5 +60,30 @@ export class BinarySearchTree<T> {
     if (!found) return false;
 
     return current;
+  }
+
+  breadthFirstSearch(): T[] {
+    const data: T[] = [];
+    const queue: Node<T>[] = [];
+
+    let node = this.root;
+
+    if (!node) {
+      return data;
+    }
+
+    queue.push(node);
+
+    while (queue.length) {
+      node = queue.shift() ?? null;
+      if (!node) break;
+
+      data.push(node.value);
+
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+
+    return data;
   }
 }

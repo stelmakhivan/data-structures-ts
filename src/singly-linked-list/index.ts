@@ -22,7 +22,7 @@ export class SinglyLinkedList<T = never> {
     public length: number = 0,
   ) {}
 
-  push(value: T): SinglyLinkedList<T> {
+  push(value: T): this {
     const newNode = new Node(value);
     if (!this.head) {
       this.head = newNode;
@@ -73,7 +73,7 @@ export class SinglyLinkedList<T = never> {
     return currentHead;
   }
 
-  unshift(value: T): SinglyLinkedList<T> {
+  unshift(value: T): this {
     const newNode = new Node(value);
 
     if (!this.head) {
@@ -141,7 +141,7 @@ export class SinglyLinkedList<T = never> {
     return removedNode!;
   }
 
-  reverse(): SinglyLinkedList<T> {
+  reverse(): this {
     if (!this.head) {
       return this;
     }
@@ -154,7 +154,7 @@ export class SinglyLinkedList<T = never> {
 
     for (let i = 0; i < this.length; i++) {
       nextNode = node.next!;
-      node!.next = prevNode;
+      node.next = prevNode;
       prevNode = node;
       node = nextNode;
     }

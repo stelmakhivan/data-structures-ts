@@ -26,6 +26,10 @@ console.log(bst.find(5));
 console.log(bst.find(13));
 console.log('\n=====FIND=====');
 
+console.log('\n=====BST (Breadth First Search)=====');
+console.log(bst.breadthFirstSearch());
+console.log('\n=====BST (Breadth First Search)=====');
+
 console.log('\n========================');
 console.log('     BinarySearchTree     ');
 console.log('========================\n');

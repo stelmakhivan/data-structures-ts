@@ -23,7 +23,7 @@ export class DoublyLinkedList<T = never> {
     public length: number = 0,
   ) {}
 
-  push(value: T): DoublyLinkedList<T> {
+  push(value: T): this {
     const newNode = new Node(value);
     if (!this.head) {
       this.head = newNode;
@@ -75,14 +75,14 @@ export class DoublyLinkedList<T = never> {
     return currentHead;
   }
 
-  unshift(value: T): DoublyLinkedList<T> {
+  unshift(value: T): this {
     const newNode = new Node(value);
 
     if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
     } else {
-      this.head!.prev = newNode;
+      this.head.prev = newNode;
       newNode.next = this.head;
       this.head = newNode;
     }
@@ -166,7 +166,7 @@ export class DoublyLinkedList<T = never> {
     return removedNode;
   }
 
-  reverse(): DoublyLinkedList<T> {
+  reverse(): this {
     if (!this.head) {
       return this;
     }
