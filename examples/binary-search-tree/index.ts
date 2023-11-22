@@ -26,9 +26,21 @@ console.log(bst.find(5));
 console.log(bst.find(13));
 console.log('\n=====FIND=====');
 
-console.log('\n=====BST (Breadth First Search)=====');
+console.log('\n=====BFS (Breadth First Search)=====');
 console.log(bst.breadthFirstSearch());
-console.log('\n=====BST (Breadth First Search)=====');
+console.log('\n=====BFS (Breadth First Search)=====');
+
+console.log('\n=====DFS PreOrder (Depth First Search PreOrder)=====');
+console.log(bst.depthFirstSearchPreOrder());
+console.log('\n=====DFS PreOrder (Depth First Search PreOrder)=====');
+
+console.log('\n=====DFS PostOrder (Depth First Search PostOrder)=====');
+console.log(bst.depthFirstSearchPostOrder());
+console.log('\n=====DFS PostOrder (Depth First Search PostOrder)=====');
+
+console.log('\n=====DFS InOrder (Depth First Search InOrder)=====');
+console.log(bst.depthFirstSearchInOrder());
+console.log('\n=====DFS InOrder (Depth First Search InOrder)=====');
 
 console.log('\n========================');
 console.log('     BinarySearchTree     ');
