@@ -28,7 +28,7 @@ export class PriorityQueue<T> {
       const parentIndex = Math.floor((index - 1) / 2);
       const parent = this.values[parentIndex];
 
-      if (element.priority <= parent.priority) break;
+      if (element.priority >= parent.priority) break;
 
       this.values[parentIndex] = element;
       this.values[index] = parent;
