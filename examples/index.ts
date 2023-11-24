@@ -5,3 +5,4 @@ import './queue';
 import './binary-search-tree';
 import './binary-heap';
 import './hash-table';
+import './graph';
