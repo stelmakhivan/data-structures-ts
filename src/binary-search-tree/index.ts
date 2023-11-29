@@ -1,4 +1,14 @@
+/**
+ * Represents a node in a binary search tree.
+ * @template T - The type of the value stored in the node.
+ */
 class Node<T> {
+  /**
+   * Creates a new node with the given value and optional left and right children.
+   * @param {T} value - The value to be stored in the node.
+   * @param {Node<T> | null} left - The left child node.
+   * @param {Node<T> | null} right - The right child node.
+   */
   constructor(
     public value: T,
     public left: Node<T> | null = null,
@@ -14,9 +24,22 @@ class Node<T> {
     we'll get a one-sided tree, which will have O(n) for insertion and searching)
 */
 
+/**
+ * Represents a binary search tree data structure.
+ * @template T - The type of elements stored in the binary search tree.
+ */
 export class BinarySearchTree<T> {
+  /**
+   * Creates a new binary search tree with an optional root node.
+   * @param {Node<T> | null} root - The root node of the binary search tree.
+   */
   constructor(public root: Node<T> | null = null) {}
 
+  /**
+   * Inserts a new value into the binary search tree.
+   * @param {T} value - The value to be inserted.
+   * @returns {this | undefined} - The updated binary search tree or undefined if the value already exists.
+   */
   insert(value: T): this | undefined {
     const newNode = new Node(value);
     if (this.root === null) {
@@ -42,6 +65,11 @@ export class BinarySearchTree<T> {
     }
   }
 
+  /**
+   * Finds a node with the specified value in the binary search tree.
+   * @param {T} value - The value to search for.
+   * @returns {Node<T> | boolean} - The found node or false if the value is not in the tree.
+   */
   find(value: T): Node<T> | boolean {
     if (this.root === null) return false;
     let current = this.root,
@@ -62,6 +90,10 @@ export class BinarySearchTree<T> {
     return current;
   }
 
+  /**
+   * Performs a breadth-first search on the binary search tree.
+   * @returns {T[]} - An array of values traversed in breadth-first order.
+   */
   breadthFirstSearch(): T[] {
     const data: T[] = [];
     const queue: Node<T>[] = [];
@@ -87,6 +119,10 @@ export class BinarySearchTree<T> {
     return data;
   }
 
+  /**
+   * Performs a depth-first search on the binary search tree in pre-order.
+   * @returns {T[]} - An array of values traversed in pre-order.
+   */
   depthFirstSearchPreOrder(): T[] {
     const data: T[] = [];
 
@@ -102,6 +138,10 @@ export class BinarySearchTree<T> {
     return data;
   }
 
+  /**
+   * Performs a depth-first search on the binary search tree in post-order.
+   * @returns {T[]} - An array of values traversed in post-order.
+   */
   depthFirstSearchPostOrder(): T[] {
     const data: T[] = [];
 
@@ -117,6 +157,10 @@ export class BinarySearchTree<T> {
     return data;
   }
 
+  /**
+   * Performs a depth-first search on the binary search tree in in-order.
+   * @returns {T[]} - An array of values traversed in in-order.
+   */
   depthFirstSearchInOrder(): T[] {
     const data: T[] = [];
 

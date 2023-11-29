@@ -1,6 +1,16 @@
 import console from 'node:console';
 
+/**
+ * Represents a node in a doubly linked list.
+ * @template T - The type of the value stored in the node.
+ */
 class Node<T> {
+  /**
+   * Creates a new node with the given value, previous node reference, and next node reference.
+   * @param {T} value - The value to be stored in the node.
+   * @param {Node<T> | null} prev - The reference to the previous node in the list.
+   * @param {Node<T> | null} next - The reference to the next node in the list.
+   */
   constructor(
     public value: T,
     public prev: Node<T> | null = null,
@@ -16,13 +26,28 @@ class Node<T> {
   - Access - O(n)
 */
 
+/**
+ * Represents a doubly linked list.
+ * @template T - The type of elements stored in the list.
+ */
 export class DoublyLinkedList<T = never> {
+  /**
+   * Creates a new doubly linked list.
+   * @param {Node<T> | null} head - The reference to the first node in the list.
+   * @param {Node<T> | null} tail - The reference to the last node in the list.
+   * @param {number} length - The number of nodes in the list.
+   */
   constructor(
     public head: Node<T> | null = null,
     public tail: Node<T> | null = null,
     public length: number = 0,
   ) {}
 
+  /**
+   * Adds a new node with the given value to the end of the list.
+   * @param {T} value - The value to be added to the list.
+   * @returns {this} - The updated linked list.
+   */
   push(value: T): this {
     const newNode = new Node(value);
     if (!this.head) {
@@ -39,6 +64,10 @@ export class DoublyLinkedList<T = never> {
     return this;
   }
 
+  /**
+   * Removes and returns the last node from the list.
+   * @returns {Node<T> | undefined} - The removed node.
+   */
   pop(): Node<T> | undefined {
     if (!this.tail) return undefined;
     const poppedNode = this.tail;
@@ -56,6 +85,10 @@ export class DoublyLinkedList<T = never> {
     return poppedNode;
   }
 
+  /**
+   * Removes and returns the first node from the list.
+   * @returns {Node<T> | undefined} - The removed node.
+   */
   shift(): Node<T> | undefined {
     if (!this.head) return undefined;
 
@@ -75,6 +108,11 @@ export class DoublyLinkedList<T = never> {
     return currentHead;
   }
 
+  /**
+   * Adds a new node with the given value to the beginning of the list.
+   * @param {T} value - The value to be added to the list.
+   * @returns {this} - The updated linked list.
+   */
   unshift(value: T): this {
     const newNode = new Node(value);
 
@@ -92,6 +130,11 @@ export class DoublyLinkedList<T = never> {
     return this;
   }
 
+  /**
+   * Gets the node at the specified index in the list.
+   * @param {number} index - The index of the node to retrieve.
+   * @returns {Node<T> | null} - The node at the specified index.
+   */
   get(index: number): Node<T> | null {
     if (index < 0 || index >= this.length) return null;
 
@@ -117,6 +160,12 @@ export class DoublyLinkedList<T = never> {
     return currentNode;
   }
 
+  /**
+   * Updates the value of the node at the specified index in the list.
+   * @param {number} index - The index of the node to update.
+   * @param {T} value - The new value to set.
+   * @returns {boolean} - True if the update is successful, false otherwise.
+   */
   set(index: number, value: T): boolean {
     const foundNode = this.get(index);
     if (foundNode != null) {
@@ -126,6 +175,12 @@ export class DoublyLinkedList<T = never> {
     return false;
   }
 
+  /**
+   * Inserts a new node with the given value at the specified index in the list.
+   * @param {number} index - The index at which to insert the new node.
+   * @param {T} value - The value to be added to the list.
+   * @returns {boolean} - True if the insertion is successful, false otherwise.
+   */
   insert(index: number, value: T): boolean {
     if (index < 0 || index > this.length) return false;
     if (index === this.length) return Boolean(this.push(value));
@@ -145,6 +200,11 @@ export class DoublyLinkedList<T = never> {
     return true;
   }
 
+  /**
+   * Removes the node at the specified index from the list.
+   * @param {number} index - The index of the node to remove.
+   * @returns {Node<T> | undefined} - The removed node.
+   */
   remove(index: number): Node<T> | undefined {
     if (index < 0 || index >= this.length) return;
     if (index === 0) return this.shift();
@@ -166,6 +226,10 @@ export class DoublyLinkedList<T = never> {
     return removedNode;
   }
 
+  /**
+   * Reverses the order of nodes in the list.
+   * @returns {this} - The reversed linked list.
+   */
   reverse(): this {
     if (!this.head) {
       return this;
@@ -192,6 +256,10 @@ export class DoublyLinkedList<T = never> {
     return this;
   }
 
+  /**
+   * Converts the linked list to an array.
+   * @returns {T[]} - The array representation of the linked list.
+   */
   toArray(): T[] {
     const array: T[] = [];
     let currentNode = this.head;
@@ -204,6 +272,10 @@ export class DoublyLinkedList<T = never> {
     return array;
   }
 
+  /**
+   * Prints the elements of the linked list to the console.
+   * @returns {void}
+   */
   print(): void {
     console.log(this.toArray());
   }

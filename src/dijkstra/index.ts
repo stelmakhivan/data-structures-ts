@@ -1,17 +1,40 @@
 import { PriorityQueue } from '@/binary-heap';
 
+/**
+ * Represents a weighted graph data structure using an adjacency list.
+ */
 export class WeightedGraph {
+  /**
+   * Creates a new weighted graph with an optional initial adjacency list.
+   * @param {Record<string, { node: string; weight: number }[]>} adjacencyList - The initial adjacency list.
+   */
   constructor(public adjacencyList: Record<string, { node: string; weight: number }[]> = {}) {}
 
+  /**
+   * Adds a new vertex to the weighted graph.
+   * @param {string} vertex - The name of the vertex to be added.
+   */
   addVertex(vertex: string) {
     if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
   }
 
+  /**
+   * Adds a weighted edge between two vertices in the weighted graph.
+   * @param {string} vertex1 - The first vertex.
+   * @param {string} vertex2 - The second vertex.
+   * @param {number} weight - The weight of the edge between the vertices.
+   */
   addEdge(vertex1: string, vertex2: string, weight: number) {
     this.adjacencyList[vertex1].push({ node: vertex2, weight });
     this.adjacencyList[vertex2].push({ node: vertex1, weight });
   }
 
+  /**
+   * Finds the shortest path in the weighted graph using Dijkstra's algorithm.
+   * @param {string} start - The starting vertex for the shortest path.
+   * @param {string} finish - The destination vertex for the shortest path.
+   * @returns {string[]} - An array representing the vertices in the shortest path.
+   */
   Dijkstra(start: string, finish: string): string[] {
     const nodes = new PriorityQueue<string>();
     const distances: Record<string, number> = {};

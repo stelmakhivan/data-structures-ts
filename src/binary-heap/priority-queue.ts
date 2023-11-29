@@ -1,4 +1,13 @@
+/**
+ * Represents a node in a priority queue.
+ * @template T - The type of the value stored in the node.
+ */
 class Node<T> {
+  /**
+   * Creates a new node with the given value and priority.
+   * @param {T} value - The value to be stored in the node.
+   * @param {number} priority - The priority associated with the value.
+   */
   constructor(
     public value: T,
     public priority: number,
@@ -7,9 +16,23 @@ class Node<T> {
 
 // https://visualgo.net/en/heap
 
+/**
+ * Represents a priority queue data structure.
+ * @template T - The type of elements stored in the priority queue.
+ */
 export class PriorityQueue<T> {
+  /**
+   * Creates a new priority queue.
+   * @param {Node<T>[]} values - An array of nodes to initialize the priority queue.
+   */
   constructor(public values: Node<T>[] = []) {}
 
+  /**
+   * Adds a new value with the specified priority to the priority queue.
+   * @param {T} value - The value to be added.
+   * @param {number} priority - The priority associated with the value.
+   * @returns {this} - The updated priority queue.
+   */
   enqueue(value: T, priority: number): this {
     const newNode = new Node(value, priority);
 
@@ -20,6 +43,10 @@ export class PriorityQueue<T> {
     return this;
   }
 
+  /**
+   * Moves the last element in the priority queue to its correct position to maintain the heap property.
+   * @returns {this} - The updated priority queue.
+   */
   bubbleUp(): this {
     let index = this.values.length - 1;
     const element = this.values[index];
@@ -38,6 +65,10 @@ export class PriorityQueue<T> {
     return this;
   }
 
+  /**
+   * Removes and returns the element with the highest priority from the priority queue.
+   * @returns {Node<T> | null} - The removed node, or null if the priority queue is empty.
+   */
   dequeue(): Node<T> | null {
     const max = this.values[0];
     const end = this.values.pop();
@@ -50,6 +81,10 @@ export class PriorityQueue<T> {
     return max;
   }
 
+  /**
+   * Moves the root element down to its correct position to maintain the heap property.
+   * @returns {this} - The updated priority queue.
+   */
   sinkDown(): this {
     let index = 0;
     const length = this.values.length;

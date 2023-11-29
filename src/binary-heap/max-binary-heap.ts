@@ -5,9 +5,22 @@
    - Search - O(n)
  */
 
+/**
+ * Represents a max binary heap data structure.
+ * @template T - The type of elements stored in the heap.
+ */
 export class MaxBinaryHeap<T> {
+  /**
+   * Creates a new max binary heap.
+   * @param {T[]} values - An array of values to initialize the heap.
+   */
   constructor(public values: T[] = []) {}
 
+  /**
+   * Inserts a new value into the heap.
+   * @param {T} value - The value to be inserted.
+   * @returns {this} - The updated max binary heap.
+   */
   insert(value: T): this {
     this.values.push(value);
 
@@ -16,6 +29,10 @@ export class MaxBinaryHeap<T> {
     return this;
   }
 
+  /**
+   * Moves the last element in the heap to its correct position to maintain the heap property.
+   * @returns {this} - The updated max binary heap.
+   */
   bubbleUp(): this {
     let index = this.values.length - 1;
     const element = this.values[index];
@@ -34,6 +51,10 @@ export class MaxBinaryHeap<T> {
     return this;
   }
 
+  /**
+   * Removes and returns the maximum value from the heap.
+   * @returns {T | null} - The removed maximum value, or null if the heap is empty.
+   */
   extractMax(): T | null {
     const max = this.values[0];
     const end = this.values.pop();
@@ -46,6 +67,10 @@ export class MaxBinaryHeap<T> {
     return max;
   }
 
+  /**
+   * Moves the root element down to its correct position to maintain the heap property.
+   * @returns {this} - The updated max binary heap.
+   */
   sinkDown(): this {
     let index = 0;
     const length = this.values.length;
