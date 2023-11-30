@@ -56,7 +56,7 @@ export class MaxBinaryHeap<T> {
    * @returns {T | null} - The removed maximum value, or null if the heap is empty.
    */
   extractMax(): T | null {
-    const max = this.values[0];
+    const max = this.values[0] ?? null;
     const end = this.values.pop();
 
     if (this.values.length > 0 && !!end) {
